@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_UZe6UFbyEeScnPc6v2sxBQ" elementId="org.eclipse.e4.ide.application" bindingContexts="_UZfhYlbyEeScnPc6v2sxBQ">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_UZe6UVbyEeScnPc6v2sxBQ" label="com.remainsoftware.egg.client" width="500" height="400">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_UZgIdVbyEeScnPc6v2sxBQ">
+      <children xsi:type="advanced:Perspective" xmi:id="_UZgIdlbyEeScnPc6v2sxBQ">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_UZgId1byEeScnPc6v2sxBQ">
+          <children xsi:type="basic:PartStack" xmi:id="_UZgIeFbyEeScnPc6v2sxBQ">
+            <children xsi:type="basic:Part" xmi:id="_UZgIeVbyEeScnPc6v2sxBQ" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.parts.SamplePart" label="Sample Part"/>
+          </children>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_UZfhclbyEeScnPc6v2sxBQ" elementId="menu:org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_UZfhc1byEeScnPc6v2sxBQ" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_UZgIcFbyEeScnPc6v2sxBQ" label="Open" iconURI="platform:/plugin/com.remainsoftware.egg.ui/icons/sample.png" command="_UZfhaVbyEeScnPc6v2sxBQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_UZgIcVbyEeScnPc6v2sxBQ" label="Save" iconURI="platform:/plugin/com.remainsoftware.egg.ui/icons/save_edit.png" command="_UZfhbFbyEeScnPc6v2sxBQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_UZgIclbyEeScnPc6v2sxBQ" label="Quit" command="_UZfhZVbyEeScnPc6v2sxBQ"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_UZgIc1byEeScnPc6v2sxBQ" label="Help">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_UZgIdFbyEeScnPc6v2sxBQ" label="About" command="_UZfhb1byEeScnPc6v2sxBQ"/>
+      </children>
+    </mainMenu>
+    <trimBars xmi:id="_UZgIelbyEeScnPc6v2sxBQ">
+      <children xsi:type="menu:ToolBar" xmi:id="_UZgvgFbyEeScnPc6v2sxBQ" elementId="toolbar:org.eclipse.ui.main.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_UZgvgVbyEeScnPc6v2sxBQ" iconURI="platform:/plugin/com.remainsoftware.egg.ui/icons/sample.png" command="_UZfhaVbyEeScnPc6v2sxBQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_UZgvglbyEeScnPc6v2sxBQ" iconURI="platform:/plugin/com.remainsoftware.egg.ui/icons/save_edit.png" command="_UZfhbFbyEeScnPc6v2sxBQ"/>
+      </children>
+    </trimBars>
+  </children>
+  <handlers xmi:id="_UZfhZlbyEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.client.handler.quitCommand" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.handlers.QuitHandler" command="_UZfhZVbyEeScnPc6v2sxBQ"/>
+  <handlers xmi:id="_UZfhalbyEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.client.handler.openCommand" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.handlers.OpenHandler" command="_UZfhaVbyEeScnPc6v2sxBQ"/>
+  <handlers xmi:id="_UZfhbVbyEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.client.handler.saveCommand" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.handlers.SaveHandler" command="_UZfhbFbyEeScnPc6v2sxBQ"/>
+  <handlers xmi:id="_UZfhcFbyEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.client.handler.aboutCommand" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.handlers.AboutHandler" command="_UZfhb1byEeScnPc6v2sxBQ"/>
+  <bindingTables xmi:id="_UZfhZ1byEeScnPc6v2sxBQ" bindingContext="_UZfhYlbyEeScnPc6v2sxBQ">
+    <bindings xmi:id="_UZfhaFbyEeScnPc6v2sxBQ" keySequence="M1+Q" command="_UZfhZVbyEeScnPc6v2sxBQ"/>
+    <bindings xmi:id="_UZfha1byEeScnPc6v2sxBQ" keySequence="M1+O" command="_UZfhaVbyEeScnPc6v2sxBQ"/>
+    <bindings xmi:id="_UZfhblbyEeScnPc6v2sxBQ" keySequence="M1+S" command="_UZfhbFbyEeScnPc6v2sxBQ"/>
+    <bindings xmi:id="_UZfhcVbyEeScnPc6v2sxBQ" keySequence="M1+A" command="_UZfhb1byEeScnPc6v2sxBQ"/>
+  </bindingTables>
+  <rootContext xmi:id="_UZfhYlbyEeScnPc6v2sxBQ" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_UZfhY1byEeScnPc6v2sxBQ" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_UZfhZFbyEeScnPc6v2sxBQ" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_UZfhZVbyEeScnPc6v2sxBQ" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
+  <commands xmi:id="_UZfhaVbyEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.client.open" commandName="openCommand"/>
+  <commands xmi:id="_UZfhbFbyEeScnPc6v2sxBQ" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
+  <commands xmi:id="_UZfhb1byEeScnPc6v2sxBQ" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
+  <addons xmi:id="_UZe6UlbyEeScnPc6v2sxBQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_UZe6U1byEeScnPc6v2sxBQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_UZe6VFbyEeScnPc6v2sxBQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_UZe6VVbyEeScnPc6v2sxBQ" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_UZe6VlbyEeScnPc6v2sxBQ" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+  <addons xmi:id="_UZfhYFbyEeScnPc6v2sxBQ" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_UZfhYVbyEeScnPc6v2sxBQ" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>
