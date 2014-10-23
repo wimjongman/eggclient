@@ -257,7 +257,6 @@ public class ServiceControlComposite extends Composite implements
 	public void dispose() {
 		System.out.println("Disposing tab.");
 		unRegisterServiceAsync();
-		fTempService = null;
 		super.dispose();
 	}
 
@@ -266,6 +265,7 @@ public class ServiceControlComposite extends Composite implements
 			@Override
 			public void run() {
 				fTempService.unregister();
+				fTempService = null;
 			}
 		});
 		thread.setName("Unregistering service (see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=448466)");
