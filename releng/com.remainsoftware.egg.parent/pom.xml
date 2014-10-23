@@ -128,6 +128,7 @@
 	<groupId>egg</groupId>
 	<modules>
 		<module>../../com.remainsoftware.egg.ui</module>
+		<module>../../com.remainsoftware.egg.core</module>
 		<module>../com.remainsoftware.egg.product</module>
 		<module>../com.remainsoftware.egg.feature</module>
 	</modules>
