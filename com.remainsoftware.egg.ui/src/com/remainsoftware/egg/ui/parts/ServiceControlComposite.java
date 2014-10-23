@@ -40,6 +40,7 @@ public class ServiceControlComposite extends Composite implements
 	private Label fLblTemp;
 	private double fTemp;
 	private ServiceRegistration<?> fTempService;
+	private boolean fAdmin = "true".equals(System.getProperty("admin"));
 
 	/**
 	 * Create the composite.
@@ -100,22 +101,34 @@ public class ServiceControlComposite extends Composite implements
 	}
 
 	private void activatePins() {
-		fBtnPins.values().forEach(btnPin -> {
-			btnPin.setEnabled(isPinServiceAvailable(btnPin));
-		});
+		fBtnPins.values().forEach(
+				btnPin -> btnPin.setEnabled(isPinServiceAvailable(btnPin)));
 	}
 
 	private boolean isPinServiceAvailable(Button pBtnPin) {
 		Integer pin = (Integer) pBtnPin.getData("pin");
-		return fServiceList.get(pin) != null;
+		boolean serviceAvailable = fServiceList.get(pin) != null;
+		return serviceAvailable & authorizedToPin(pin);
 	}
 
 	private void addPin(Composite parent, int i) {
-		new Label(this, SWT.NONE).setText("Switch Pin " + i);
+		new Label(this, SWT.NONE).setText(getPinText(i));
 		Button btnPin = new Button(this, SWT.CHECK);
 		btnPin.setData("pin", i);
 		btnPin.addSelectionListener(this);
 		fBtnPins.put(i, btnPin);
+	}
+
+	private String getPinText(int i) {
+		switch (i) {
+		case 0:
+			return "Egg Cooker (" + i + ")";
+		case 1:
+			return "Light (" + i + ")";
+		default:
+			break;
+		}
+		return "??";
 	}
 
 	@Override
@@ -157,7 +170,12 @@ public class ServiceControlComposite extends Composite implements
 	@Override
 	public void widgetSelected(SelectionEvent e) {
 		Integer pin = (Integer) e.widget.getData("pin");
-		OSGiUtil.getService(fServiceList.get(pin), this).toggle();
+		if (authorizedToPin(pin))
+			OSGiUtil.getService(fServiceList.get(pin), this).toggle();
+	}
+
+	private boolean authorizedToPin(Integer pin) {
+		return pin != 0 || fAdmin;
 	}
 
 	@Override
@@ -238,9 +256,21 @@ public class ServiceControlComposite extends Composite implements
 	@Override
 	public void dispose() {
 		System.out.println("Disposing tab.");
-		fTempService.unregister();
+		unRegisterServiceAsync();
 		fTempService = null;
 		super.dispose();
+	}
+
+	private void unRegisterServiceAsync() {
+		Thread thread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				fTempService.unregister();
+			}
+		});
+		thread.setName("Unregistering service (see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=448466)");
+		thread.setDaemon(true);
+		thread.start();
 	}
 
 	public void removeService(ServiceReference<IGPIOPinOutput> pReference) {

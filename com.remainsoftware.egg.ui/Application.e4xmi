@@ -9,6 +9,7 @@
             <children xsi:type="basic:Part" xmi:id="_UZgIeVbyEeScnPc6v2sxBQ" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.parts.EggPart" label="Control">
               <tags>NoMove</tags>
             </children>
+            <children xsi:type="basic:Part" xmi:id="_5MP70FpFEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.ui.part.presentation" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.parts.Presentation" label="Presentation"/>
           </children>
         </children>
       </children>
