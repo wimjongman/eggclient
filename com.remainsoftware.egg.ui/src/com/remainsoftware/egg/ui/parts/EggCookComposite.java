@@ -156,16 +156,21 @@ public class EggCookComposite extends Composite {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				openFloatShell();
-				if (fAdmin && !isCooking()) {
+				if (fAdmin)
+					toggleCooking();
+			}
+
+			private void toggleCooking() {
+				if (!isCooking()) {
 					cook();
 					fBtnCook.setImage(ResourceManager.getPluginImage(
 							"com.remainsoftware.egg.ui", "icons/stop.png"));
 					fBtnCook.setText("Stop!!");
-				}
-				if (fAdmin && isCooking()) {
+				} else {
 					stopCooking();
 					fBtnCook.setImage(ResourceManager.getPluginImage(
-							"com.remainsoftware.egg.ui", "icons/egg_PNG5.png"));
+							"com.remainsoftware.egg.ui",
+							"icons/egg_PNG5.png"));
 					fBtnCook.setText(COOK);
 				}
 			}
