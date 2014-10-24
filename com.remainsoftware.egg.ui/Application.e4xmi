@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmi:id="_UZe6UFbyEeScnPc6v2sxBQ" elementId="org.eclipse.e4.ide.application" bindingContexts="_UZfhYlbyEeScnPc6v2sxBQ">
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_UZe6UVbyEeScnPc6v2sxBQ" label="com.remainsoftware.egg.client" width="500" height="400">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_UZe6UVbyEeScnPc6v2sxBQ" label="com.remainsoftware.egg.client" iconURI="platform:/plugin/com.remainsoftware.egg.ui/icons/egg-16.png" width="500" height="400">
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_UZgIdVbyEeScnPc6v2sxBQ">
       <children xsi:type="advanced:Perspective" xmi:id="_UZgIdlbyEeScnPc6v2sxBQ">
         <children xsi:type="basic:PartSashContainer" xmi:id="_UZgId1byEeScnPc6v2sxBQ" horizontal="true">
           <children xsi:type="basic:PartStack" xmi:id="_UZgIeFbyEeScnPc6v2sxBQ">
             <tags>NoTitle</tags>
-            <children xsi:type="basic:Part" xmi:id="_UZgIeVbyEeScnPc6v2sxBQ" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.parts.EggPart" label="Control">
+            <children xsi:type="basic:Part" xmi:id="_UZgIeVbyEeScnPc6v2sxBQ" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.parts.EggPart" label="Control" iconURI="platform:/plugin/com.remainsoftware.egg.ui/icons/Yoshis-Egg-icon.png">
               <tags>NoMove</tags>
             </children>
-            <children xsi:type="basic:Part" xmi:id="_5MP70FpFEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.ui.part.presentation" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.parts.Presentation" label="Presentation"/>
+            <children xsi:type="basic:Part" xmi:id="_9xGD4FuhEeSYhMzHuW_g7w" elementId="com.remainsoftware.egg.ui.part.cook" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.parts.EggCookPart" label="Cook" iconURI="platform:/plugin/com.remainsoftware.egg.ui/icons/Egg-icon.png"/>
           </children>
         </children>
       </children>

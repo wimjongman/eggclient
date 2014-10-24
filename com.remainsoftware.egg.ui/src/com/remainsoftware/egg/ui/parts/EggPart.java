@@ -30,8 +30,10 @@ import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
-import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
+
+import com.remainsoftware.egg.core.OSGiUtil;
+import com.remainsoftware.egg.core.ServiceManager;
 
 public class EggPart implements
 		ServiceTrackerCustomizer<IGPIOPinOutput, IGPIOPinOutput> {
@@ -39,15 +41,13 @@ public class EggPart implements
 	@Inject
 	UISynchronize fSyncer;
 
-	HashMap<ServiceReference<IGPIOPinOutput>, CTabFolder> fServiceFolder;
-
 	HashMap<String, CTabItem> fTabs = new HashMap<String, CTabItem>();
-
-	private ServiceTracker<IGPIOPinOutput, IGPIOPinOutput> fPinTracker;
 
 	private CTabFolder fTabFolder;
 
 	private CTabItem fMainTab;
+
+	ServiceManager fServiceManager = new ServiceManager(this);
 
 	@PostConstruct
 	public void createComposite(Composite pParent) {
@@ -88,17 +88,8 @@ public class EggPart implements
 
 		fTabFolder.setSelection(fMainTab);
 
-		// Setup and open service tracker to get IGPIOPinOutput
-		// instances
-		initServiceTrackers();
-	}
-
-	private void initServiceTrackers() {
-		System.out.println("Init Trackers");
-		fPinTracker = new ServiceTracker<IGPIOPinOutput, IGPIOPinOutput>(
-				FrameworkUtil.getBundle(getClass()).getBundleContext(),
-				IGPIOPinOutput.class, this);
-		fPinTracker.open();
+		// Open service tracker to get IGPIOPinOutput instances
+		fServiceManager.open();
 	}
 
 	@Override
@@ -118,8 +109,7 @@ public class EggPart implements
 			}
 
 		});
-		return FrameworkUtil.getBundle(getClass()).getBundleContext()
-				.getService(pReference);
+		return OSGiUtil.getService(pReference, this);
 	}
 
 	private CTabItem getTabItem(ServiceReference<IGPIOPinOutput> pReference) {
@@ -135,7 +125,6 @@ public class EggPart implements
 		return pReference.getProperty("ecf.generic.server.hostname").toString();
 	}
 
-
 	@Override
 	public void modifiedService(ServiceReference<IGPIOPinOutput> pReference,
 			IGPIOPinOutput pService) {
@@ -150,9 +139,10 @@ public class EggPart implements
 			public void run() {
 				System.out.println("Service lost");
 				CTabItem tabItem = fTabs.get(getHostName(pReference));
-				ServiceControlComposite control = (ServiceControlComposite) tabItem.getControl();
+				ServiceControlComposite control = (ServiceControlComposite) tabItem
+						.getControl();
 				control.removeService(pReference);
-				if(control.getServiceCount() == 0){
+				if (control.getServiceCount() == 0) {
 					tabItem.getControl().dispose();
 					tabItem.dispose();
 					fTabs.remove(getHostName(pReference));

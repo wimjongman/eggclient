@@ -42,6 +42,7 @@ public class OSGiUtil {
 			pinProps.put("ecf.generic.server.hostname", InetAddress
 					.getLocalHost().getHostAddress());
 		} catch (UnknownHostException e) {
+			System.out.println("Cannot find host");
 		}
 		pinProps.put("ecf.exported.async.interfaces", "*");
 		Properties systemProps = System.getProperties();

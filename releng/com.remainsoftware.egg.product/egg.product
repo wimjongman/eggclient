@@ -136,7 +136,7 @@
       <feature id="org.eclipse.ecf.provider.generic.remoteservice.feature"/>
       <feature id="org.eclipse.ecf.provider.generic.feature"/>
       <feature id="org.eclipse.ecf.sharedobject.feature"/>
-      <feature id="org.eclipse.ecf.discovery.jmdns.feature"/>
+      <feature id="org.eclipse.ecf.discovery.slp.feature"/>
    </features>
 
    <configurations>

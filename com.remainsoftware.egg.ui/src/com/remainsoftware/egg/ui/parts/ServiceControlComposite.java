@@ -261,16 +261,16 @@ public class ServiceControlComposite extends Composite implements
 	}
 
 	private void unRegisterServiceAsync() {
-		Thread thread = new Thread(new Runnable() {
-			@Override
-			public void run() {
+//		Thread thread = new Thread(new Runnable() {
+//			@Override
+//			public void run() {
 				fTempService.unregister();
 				fTempService = null;
-			}
-		});
-		thread.setName("Unregistering service (see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=448466)");
-		thread.setDaemon(true);
-		thread.start();
+//			}
+//		});
+//		thread.setName("Unregistering service (see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=448466)");
+//		thread.setDaemon(true);
+//		thread.start();
 	}
 
 	public void removeService(ServiceReference<IGPIOPinOutput> pReference) {
