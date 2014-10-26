@@ -18,6 +18,10 @@
                name="appName"
                value="Egg Client">
          </property>
+         <property
+               name="windowImages"
+               value="icons/egg-16.png">
+         </property>
       </product>
    </extension>
    <extension

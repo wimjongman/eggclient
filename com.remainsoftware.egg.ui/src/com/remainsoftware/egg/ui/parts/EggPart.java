@@ -1,13 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2010 - 2013 IBM Corporation and others.
+ * Copyright (c) 2014 Remain Software and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     IBM Corporation - initial API and implementation
- *     Lars Vogel <lars.Vogel@gmail.com> - Bug 419770
+ *     Wim.Jongman@remainsofwtare.com
  *******************************************************************************/
 package com.remainsoftware.egg.ui.parts;
 
@@ -46,12 +45,10 @@ public class EggPart implements
 
 	private CTabItem fMainTab;
 
-	ServiceManager fServiceManager = new ServiceManager(this);
+	ServiceManager fServiceManager;
 
 	@PostConstruct
 	public void createComposite(Composite pParent) {
-		System.out.println(fSyncer);
-
 		fTabFolder = new CTabFolder(pParent, SWT.CLOSE | SWT.FLAT | SWT.BOTTOM);
 		fTabFolder.setSelectionBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
@@ -88,6 +85,7 @@ public class EggPart implements
 		fTabFolder.setSelection(fMainTab);
 
 		// Open service tracker to get IGPIOPinOutput instances
+		fServiceManager = new ServiceManager(this);
 		fServiceManager.open();
 	}
 

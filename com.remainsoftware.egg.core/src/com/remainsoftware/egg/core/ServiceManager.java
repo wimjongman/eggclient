@@ -17,6 +17,7 @@ public class ServiceManager {
 		fPinTracker = new ServiceTracker<IGPIOPinOutput, IGPIOPinOutput>(
 				FrameworkUtil.getBundle(getClass()).getBundleContext(),
 				IGPIOPinOutput.class, pTrackerCustomizer);
+		fPinTracker.open();
 	}
 
 	public boolean hasPin(int pin) {
@@ -38,7 +39,7 @@ public class ServiceManager {
 	}
 
 	public void open() {
-		fPinTracker.open();
+		//fPinTracker.open();
 	}
 
 }
