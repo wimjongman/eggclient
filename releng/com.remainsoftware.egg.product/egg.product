@@ -12,6 +12,8 @@
 -console
 -consolelog
       </programArgs>
+      <vmArgs>-Decf.generic.server.hostname=192.168.99.? -Dnet.mdns.interface=192.168.99.?
+      </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
@@ -152,5 +154,5 @@
       <property name="-console" value="" />
       <property name="-consolelog" value="" />
    </configurations>
-   
+
 </product>

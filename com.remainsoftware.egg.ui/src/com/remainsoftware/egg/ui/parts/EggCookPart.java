@@ -27,7 +27,7 @@ public class EggCookPart implements
 	private ServiceRegistration<?> fTempService;
 	private EggCookComposite fEggCookComposite;
 
-	private ServiceManager fServiceManager = new ServiceManager(this);
+	private ServiceManager fServiceManager;
 
 	@Inject
 	public EggCookPart() {
@@ -36,10 +36,10 @@ public class EggCookPart implements
 
 	@PostConstruct
 	public void postConstruct(Composite parent) {
+		registerTemperatureService();
 		parent.setLayout(new FillLayout());
 		fEggCookComposite = new EggCookComposite(parent, SWT.NONE);
-		fServiceManager.open();
-		registerTemperatureService();
+		fServiceManager = new ServiceManager(this);
 	}
 
 	private void registerTemperatureService() {

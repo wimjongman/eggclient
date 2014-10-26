@@ -14,7 +14,7 @@ import org.eclipse.swt.widgets.Shell;
 
 public class ThermometerComposite extends Composite {
 
-	private double fTemp;
+	private double fTemp = 22.0;
 	private ThermometerFigure fThermo;
 
 	public static void main(String[] args) {
