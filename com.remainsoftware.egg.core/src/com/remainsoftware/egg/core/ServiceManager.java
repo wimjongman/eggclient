@@ -1,8 +1,5 @@
 package com.remainsoftware.egg.core;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.eclipse.ecf.raspberrypi.gpio.IGPIOPin;
 import org.eclipse.ecf.raspberrypi.gpio.IGPIOPinOutput;
 import org.osgi.framework.FrameworkUtil;
@@ -16,21 +13,10 @@ public class ServiceManager {
 
 	public ServiceManager(
 			ServiceTrackerCustomizer<IGPIOPinOutput, IGPIOPinOutput> pTrackerCustomizer) {
+		System.out.println("Init tracker");
 		fPinTracker = new ServiceTracker<IGPIOPinOutput, IGPIOPinOutput>(
 				FrameworkUtil.getBundle(getClass()).getBundleContext(),
 				IGPIOPinOutput.class, pTrackerCustomizer);
-	}
-
-	private ArrayList<ServiceTrackerCustomizer<IGPIOPinOutput, IGPIOPinOutput>> fTrackerCustomerizers = new ArrayList<>();
-
-	public void addListener(
-			ServiceTrackerCustomizer<IGPIOPinOutput, IGPIOPinOutput> pTrackerCustomizer) {
-		fTrackerCustomerizers.add(pTrackerCustomizer);
-	}
-
-	public void removeListener(
-			ServiceTrackerCustomizer<IGPIOPinOutput, IGPIOPinOutput> pTrackerCustomizer) {
-		fTrackerCustomerizers.remove(pTrackerCustomizer);
 	}
 
 	public boolean hasPin(int pin) {

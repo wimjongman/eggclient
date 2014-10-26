@@ -3,6 +3,7 @@
 
 <product name="Egg Client" uid="com.remainsoftware.egg.ui.product" id="com.remainsoftware.egg.ui.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
+
    <configIni use="default">
    </configIni>
 
@@ -15,7 +16,7 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="/com.remainsoftware.egg.ui/icons/egg-16.png"/>
 
    <splash
       location="com.remainsoftware.egg.ui" />
@@ -25,6 +26,7 @@
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -136,12 +138,12 @@
       <feature id="org.eclipse.ecf.provider.generic.remoteservice.feature"/>
       <feature id="org.eclipse.ecf.provider.generic.feature"/>
       <feature id="org.eclipse.ecf.sharedobject.feature"/>
-      <feature id="org.eclipse.ecf.discovery.slp.feature"/>
+      <feature id="org.eclipse.ecf.discovery.jmdns.feature" version="1.0.0.v20140818-1747"/>
    </features>
 
    <configurations>
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.ecf.osgi.services.distribution" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.ecf.osgi.services.distribution" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
@@ -150,5 +152,5 @@
       <property name="-console" value="" />
       <property name="-consolelog" value="" />
    </configurations>
-
+   
 </product>
