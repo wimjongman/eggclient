@@ -78,8 +78,7 @@ public class EggCookComposite extends Composite {
 		fBtnCook.setFont(SWTResourceManager.getFont("Segoe UI", 15, SWT.BOLD
 				| SWT.ITALIC));
 		fBtnCook.setText(COOK);
-		fBtnCook.setImage(ResourceManager.getPluginImage(
-				"com.remainsoftware.egg.ui", "icons/egg_PNG5.png"));
+		setButtonCooking(isCooking());
 		fBtnCook.addSelectionListener(getCookButtonSelectionListener());
 		fBtnCook.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1,
 				1));
@@ -89,8 +88,7 @@ public class EggCookComposite extends Composite {
 		fBtnLight.setFont(SWTResourceManager.getFont("Segoe UI", 15, SWT.BOLD
 				| SWT.ITALIC));
 		fBtnLight.addSelectionListener(getLightButtonSelectionListener());
-		fBtnLight.setImage(ResourceManager.getPluginImage(
-				"com.remainsoftware.egg.ui", "icons/light.png"));
+		setButtonLight(isLightOn());
 		fBtnLight.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1,
 				1));
 		fBtnLight.setText("Light");
@@ -121,26 +119,34 @@ public class EggCookComposite extends Composite {
 			public void widgetSelected(SelectionEvent e) {
 				if (!isLightOn()) {
 					lightOn();
-					fBtnLight.setImage(ResourceManager.getPluginImage(
-							"com.remainsoftware.egg.ui", "icons/light_on.png"));
 				} else {
 					lightOff();
-					fBtnLight.setImage(ResourceManager.getPluginImage(
-							"com.remainsoftware.egg.ui", "icons/light.png"));
 				}
 			}
 		};
 	}
 
+	protected void setButtonLight(boolean pLightOn) {
+		if (pLightOn) {
+			fBtnLight.setImage(ResourceManager.getPluginImage(
+					"com.remainsoftware.egg.ui", "icons/light_on.png"));
+		} else {
+			fBtnLight.setImage(ResourceManager.getPluginImage(
+					"com.remainsoftware.egg.ui", "icons/light.png"));
+		}
+	}
+
 	protected void lightOn() {
 		if (fLightPin != null && !isLightOn()) {
 			fLightPin.toggle();
+			setButtonLight(true);
 		}
 	}
 
 	protected void lightOff() {
 		if (isLightOn()) {
 			fLightPin.toggle();
+			setButtonLight(false);
 		}
 	}
 
@@ -160,26 +166,34 @@ public class EggCookComposite extends Composite {
 					toggleCooking();
 			}
 
-			private void toggleCooking() {
-				if (!isCooking()) {
-					cook();
-					fBtnCook.setImage(ResourceManager.getPluginImage(
-							"com.remainsoftware.egg.ui", "icons/stop.png"));
-					fBtnCook.setText("Stop!!");
-				} else {
-					stopCooking();
-					fBtnCook.setImage(ResourceManager.getPluginImage(
-							"com.remainsoftware.egg.ui",
-							"icons/egg_PNG5.png"));
-					fBtnCook.setText(COOK);
-				}
-			}
 		};
+	}
+
+	private void toggleCooking() {
+		if (!isCooking()) {
+			cook();
+		} else {
+			stopCooking();
+			setButtonCooking(false);
+		}
+	}
+
+	private void setButtonCooking(boolean pCooking) {
+		if (pCooking) {
+			fBtnCook.setImage(ResourceManager.getPluginImage(
+					"com.remainsoftware.egg.ui", "icons/stop.png"));
+			fBtnCook.setText("Stop!!");
+		} else {
+			fBtnCook.setImage(ResourceManager.getPluginImage(
+					"com.remainsoftware.egg.ui", "icons/egg_PNG5.png"));
+			fBtnCook.setText(COOK);
+		}
 	}
 
 	protected void stopCooking() {
 		if (fAdmin && fCookPin != null && isCooking()) {
 			fCookPin.setState(SWITCH_CLOSED);
+			setButtonCooking(false);
 		}
 	}
 
@@ -193,6 +207,7 @@ public class EggCookComposite extends Composite {
 	protected void cook() {
 		if (fAdmin || fCookPin != null && !isCooking()) {
 			fCookPin.setState(SWITCH_OPEN);
+			setButtonCooking(true);
 		}
 	}
 

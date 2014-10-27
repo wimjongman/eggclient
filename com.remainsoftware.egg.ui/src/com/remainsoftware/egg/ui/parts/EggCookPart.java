@@ -5,7 +5,6 @@ import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 import org.eclipse.e4.ui.di.UISynchronize;
-import org.eclipse.ecf.raspberrypi.gpio.IGPIOPin;
 import org.eclipse.ecf.raspberrypi.gpio.IGPIOPinOutput;
 import org.eclipse.ecf.raspberrypi.gpio.ILM35;
 import org.eclipse.swt.SWT;
