@@ -57,7 +57,7 @@ public class KnobComposite extends Composite {
 				.addManualValueChangeListener(new IManualValueChangeListener() {
 					@Override
 					public void manualValueChanged(double newValue) {
-						System.out.println("You set value to: " + newValue);
+//						System.out.println("You set value to: " + newValue);
 					}
 				});
 

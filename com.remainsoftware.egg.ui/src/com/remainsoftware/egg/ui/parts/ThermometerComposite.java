@@ -1,6 +1,7 @@
 package com.remainsoftware.egg.ui.parts;
 
 import org.eclipse.draw2d.LightweightSystem;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.nebula.visualization.widgets.figures.ThermometerFigure;
 import org.eclipse.nebula.visualization.xygraph.util.XYGraphMediaFactory;
 import org.eclipse.swt.SWT;
@@ -82,6 +83,10 @@ public class ThermometerComposite extends Composite {
 	}
 
 	public void setTemperature(Double pTemp) {
+		if(pTemp == null){
+			MessageDialog.openError(getShell(), "No Temperature", "No Temperature");
+			return;
+		}
 		fTemp = pTemp;
 		fThermo.setValue(fTemp);
 		if (fTemp > 60) {

@@ -3,6 +3,7 @@ package com.remainsoftware.egg.ui.parts;
 import java.util.Random;
 
 import org.eclipse.ecf.raspberrypi.gpio.IGPIOPinOutput;
+import org.eclipse.nebula.visualization.widgets.datadefinition.IManualValueChangeListener;
 import org.eclipse.nebula.widgets.oscilloscope.multichannel.Oscilloscope;
 import org.eclipse.nebula.widgets.oscilloscope.multichannel.OscilloscopeDispatcher;
 import org.eclipse.swt.SWT;
@@ -19,6 +20,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.widgets.Label;
 
 public class EggCookComposite extends Composite {
 	private static final int PIN_COOK = 0;
@@ -61,10 +63,10 @@ public class EggCookComposite extends Composite {
 	public EggCookComposite(Composite parent, int style) {
 		super(parent, style);
 
-		setLayout(new GridLayout(4, false));
+		setLayout(new GridLayout(3, false));
 
 		fThermo = new ThermometerComposite(this, SWT.NONE);
-		fThermo.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 3));
+		fThermo.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 3));
 
 		Group grpSafetyTemperature = new Group(this, SWT.NONE);
 		grpSafetyTemperature.setLayout(new FillLayout(SWT.HORIZONTAL));
@@ -73,6 +75,7 @@ public class EggCookComposite extends Composite {
 		grpSafetyTemperature.setText("Safety Temperature");
 
 		fKnob = new KnobComposite(grpSafetyTemperature, SWT.NONE);
+		fKnob.getKnob().addManualValueChangeListener(getValueChangeListener());
 
 		fBtnCook = new Button(this, SWT.NONE);
 		fBtnCook.setFont(SWTResourceManager.getFont("Segoe UI", 15, SWT.BOLD
@@ -111,6 +114,16 @@ public class EggCookComposite extends Composite {
 
 		Oscilloscope oscilloscope_1 = new Oscilloscope(grpLightPin, SWT.BORDER);
 		dispatch(oscilloscope_1, PIN_LIGHT);
+	}
+
+	private IManualValueChangeListener getValueChangeListener() {
+		return new IManualValueChangeListener() {
+			@Override
+			public void manualValueChanged(double newValue) {
+				fThermo.getThermo().setHiLevel(newValue);
+				fThermo.getThermo().setShowHi(true);
+			}
+		};
 	}
 
 	private SelectionAdapter getLightButtonSelectionListener() {
@@ -220,7 +233,7 @@ public class EggCookComposite extends Composite {
 			fFloatShell.setLocation(0, 0);
 			fFloatShell.setSize(120, 300);
 			fFloatShell.setLayout(new FillLayout());
-			fFloatShell.setAlpha(200);
+			fFloatShell.setAlpha(220);
 			fFloatShell.layout();
 			fFloatShell.open();
 			fFloatingThermo.setTemperature(fTemp);
