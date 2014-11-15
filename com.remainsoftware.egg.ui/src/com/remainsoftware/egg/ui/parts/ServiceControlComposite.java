@@ -13,9 +13,9 @@ package com.remainsoftware.egg.ui.parts;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import org.eclipse.ecf.raspberrypi.gpio.IAnalogService;
 import org.eclipse.ecf.raspberrypi.gpio.IGPIOPin;
 import org.eclipse.ecf.raspberrypi.gpio.IGPIOPinOutput;
-import org.eclipse.ecf.raspberrypi.gpio.ILM35;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnWeightData;
@@ -224,20 +224,21 @@ public class ServiceControlComposite extends Composite implements
 
 		System.out.println("Registering temperature service");
 
-		fTempService = OSGiUtil.RegisterService(ILM35.class, new ILM35() {
-			@Override
-			public void setTemperature(String pHost, double pTemperature) {
-				System.out.println("Temperature " + pTemperature);
-				fTemp = pTemperature;
-				getDisplay().syncExec(new Runnable() {
+		fTempService = OSGiUtil.RegisterService(IAnalogService.class,
+				new IAnalogService() {
 					@Override
-					public void run() {
-						fLblTemp.setText(prettyTemp(fTemp));
+					public void setValue(String pHost, String pDevice,
+							double pValue) {
+						System.out.println("Temperature " + pValue);
+						fTemp = pValue;
+						getDisplay().syncExec(new Runnable() {
+							@Override
+							public void run() {
+								fLblTemp.setText(prettyTemp(fTemp));
+							}
+						});
 					}
-				});
-
-			}
-		}, this);
+				}, this);
 
 	}
 
@@ -271,16 +272,16 @@ public class ServiceControlComposite extends Composite implements
 	}
 
 	private void unRegisterServiceAsync() {
-//		Thread thread = new Thread(new Runnable() {
-//			@Override
-//			public void run() {
-				fTempService.unregister();
-				fTempService = null;
-//			}
-//		});
-//		thread.setName("Unregistering service (see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=448466)");
-//		thread.setDaemon(true);
-//		thread.start();
+		// Thread thread = new Thread(new Runnable() {
+		// @Override
+		// public void run() {
+		fTempService.unregister();
+		fTempService = null;
+		// }
+		// });
+		// thread.setName("Unregistering service (see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=448466)");
+		// thread.setDaemon(true);
+		// thread.start();
 	}
 
 	public void removeService(ServiceReference<IGPIOPinOutput> pReference) {

@@ -3,12 +3,9 @@ package com.remainsoftware.egg.core;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Dictionary;
-import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.Map;
 import java.util.Properties;
 
-import org.eclipse.ecf.raspberrypi.gpio.ILM35;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;

@@ -15,8 +15,8 @@ import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 import org.eclipse.e4.ui.di.UISynchronize;
+import org.eclipse.ecf.raspberrypi.gpio.IAnalogService;
 import org.eclipse.ecf.raspberrypi.gpio.IGPIOPinOutput;
-import org.eclipse.ecf.raspberrypi.gpio.ILM35;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -56,13 +56,13 @@ public class EggCookPart implements
 
 		System.out.println("Registering temperature service");
 
-		fTempService = OSGiUtil.RegisterService(ILM35.class, new ILM35() {
+		fTempService = OSGiUtil.RegisterService(IAnalogService.class, new IAnalogService() {
 			private double fTemp;
 
 			@Override
-			public void setTemperature(String pHost, double pTemperature) {
-				System.out.println("Temperature " + pTemperature);
-				fTemp = pTemperature;
+			public void setValue(String pHost, String pDevice, double pValue) {
+				System.out.println("Temperature " + pValue);
+				fTemp = pValue;
 				sync.syncExec(new Runnable() {
 					@Override
 					public void run() {
