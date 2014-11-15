@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Remain Software and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Wim.Jongman@remainsofwtare.com
+ *******************************************************************************/
 package com.remainsoftware.egg.ui.parts;
 
 import javax.annotation.PostConstruct;
@@ -26,8 +36,6 @@ public class EggCookPart implements
 	private ServiceRegistration<?> fTempService;
 	private EggCookComposite fEggCookComposite;
 
-	private ServiceManager fServiceManager;
-
 	@Inject
 	public EggCookPart() {
 
@@ -38,7 +46,6 @@ public class EggCookPart implements
 		registerTemperatureService();
 		parent.setLayout(new FillLayout());
 		fEggCookComposite = new EggCookComposite(parent, SWT.NONE);
-		fServiceManager = new ServiceManager(this);
 	}
 
 	private void registerTemperatureService() {
@@ -99,7 +106,7 @@ public class EggCookPart implements
 	@Override
 	public IGPIOPinOutput addingService(
 			ServiceReference<IGPIOPinOutput> pReference) {
-		Integer pin = fServiceManager.getPinFromServiceRef(pReference);
+		Integer pin = ServiceManager.getPinFromServiceRef(pReference);
 		IGPIOPinOutput service = OSGiUtil.getService(pReference, this);
 		setPinInUI(pin, service);
 		return service;
@@ -113,7 +120,7 @@ public class EggCookPart implements
 	@Override
 	public void removedService(ServiceReference<IGPIOPinOutput> pReference,
 			IGPIOPinOutput service) {
-		Integer pin = fServiceManager.getPinFromServiceRef(pReference);
+		Integer pin = ServiceManager.getPinFromServiceRef(pReference);
 		setPinInUI(pin, null);
 	}
 }

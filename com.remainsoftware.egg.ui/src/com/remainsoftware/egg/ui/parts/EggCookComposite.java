@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Remain Software and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Wim.Jongman@remainsofwtare.com
+ *******************************************************************************/
 package com.remainsoftware.egg.ui.parts;
 
 import java.util.Random;
@@ -20,7 +30,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.wb.swt.SWTResourceManager;
-import org.eclipse.swt.widgets.Label;
 
 public class EggCookComposite extends Composite {
 	private static final int PIN_COOK = 0;
