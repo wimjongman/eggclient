@@ -16,13 +16,11 @@
     </children>
   </children>
   <handlers xmi:id="_UZfhZlbyEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.client.handler.quitCommand" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.handlers.QuitHandler" command="_UZfhZVbyEeScnPc6v2sxBQ"/>
-  <handlers xmi:id="_UZfhalbyEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.client.handler.openCommand" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.handlers.OpenHandler" command="_UZfhaVbyEeScnPc6v2sxBQ"/>
-  <handlers xmi:id="_UZfhbVbyEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.client.handler.saveCommand" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.handlers.SaveHandler" command="_UZfhbFbyEeScnPc6v2sxBQ"/>
   <handlers xmi:id="_UZfhcFbyEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.client.handler.aboutCommand" contributionURI="bundleclass://com.remainsoftware.egg.ui/com.remainsoftware.egg.ui.handlers.AboutHandler" command="_UZfhb1byEeScnPc6v2sxBQ"/>
   <bindingTables xmi:id="_UZfhZ1byEeScnPc6v2sxBQ" bindingContext="_UZfhYlbyEeScnPc6v2sxBQ">
     <bindings xmi:id="_UZfhaFbyEeScnPc6v2sxBQ" keySequence="M1+Q" command="_UZfhZVbyEeScnPc6v2sxBQ"/>
-    <bindings xmi:id="_UZfha1byEeScnPc6v2sxBQ" keySequence="M1+O" command="_UZfhaVbyEeScnPc6v2sxBQ"/>
-    <bindings xmi:id="_UZfhblbyEeScnPc6v2sxBQ" keySequence="M1+S" command="_UZfhbFbyEeScnPc6v2sxBQ"/>
+    <bindings xmi:id="_UZfha1byEeScnPc6v2sxBQ" keySequence="M1+O"/>
+    <bindings xmi:id="_UZfhblbyEeScnPc6v2sxBQ" keySequence="M1+S"/>
     <bindings xmi:id="_UZfhcVbyEeScnPc6v2sxBQ" keySequence="M1+A" command="_UZfhb1byEeScnPc6v2sxBQ"/>
   </bindingTables>
   <rootContext xmi:id="_UZfhYlbyEeScnPc6v2sxBQ" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
@@ -30,8 +28,6 @@
     <children xmi:id="_UZfhZFbyEeScnPc6v2sxBQ" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
   <commands xmi:id="_UZfhZVbyEeScnPc6v2sxBQ" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
-  <commands xmi:id="_UZfhaVbyEeScnPc6v2sxBQ" elementId="com.remainsoftware.egg.client.open" commandName="openCommand"/>
-  <commands xmi:id="_UZfhbFbyEeScnPc6v2sxBQ" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
   <commands xmi:id="_UZfhb1byEeScnPc6v2sxBQ" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
   <addons xmi:id="_UZe6UlbyEeScnPc6v2sxBQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_UZe6U1byEeScnPc6v2sxBQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
