@@ -34,7 +34,7 @@ public class E4LifeCycle {
 	void postContextCreate(IEclipseContext workbenchContext) {
 		String ip = OSGiUtil.getFirstInterface();
 		setECFProperty(ip);
-		setMDNSProperty(ip);
+		setMDNSProperty(ip); // too late, jmdns already started
 	}
 
 	private void setECFProperty(String ip) {
