@@ -16,6 +16,8 @@ import org.eclipse.e4.ui.workbench.lifecycle.PreSave;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessAdditions;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessRemovals;
 
+import com.remainsoftware.egg.core.OSGiUtil;
+
 /**
  * This is a stub implementation containing e4 LifeCycle annotated methods.<br />
  * There is a corresponding entry in <em>plugin.xml</em> (under the
@@ -25,8 +27,33 @@ import org.eclipse.e4.ui.workbench.lifecycle.ProcessRemovals;
 @SuppressWarnings("restriction")
 public class E4LifeCycle {
 
+	private static final String NET_MDNS_INTERFACE = "net.mdns.interface";
+	private static final String ECF_GENERIC_SERVER_HOSTNAME = "ecf.generic.server.hostname";
+
 	@PostContextCreate
 	void postContextCreate(IEclipseContext workbenchContext) {
+		String ip = OSGiUtil.getFirstInterface();
+		setECFProperty(ip);
+		setMDNSProperty(ip);
+	}
+
+	private void setECFProperty(String ip) {
+		if (ip != null) {
+			setProperty(ip, ECF_GENERIC_SERVER_HOSTNAME);
+		}
+	}
+
+	private void setMDNSProperty(String ip) {
+		if (ip != null) {
+			setProperty(ip, NET_MDNS_INTERFACE);
+		}
+	}
+
+	private void setProperty(String ip, String pProp) {
+		String prop = System.getProperty(pProp);
+		if (prop == null) {
+			System.setProperty(pProp, ip);
+		}
 	}
 
 	@PreSave

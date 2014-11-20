@@ -3,7 +3,6 @@
 
 <product name="Egg Client" uid="com.remainsoftware.egg.ui.product" id="com.remainsoftware.egg.ui.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -12,7 +11,7 @@
 -console
 -consolelog
       </programArgs>
-      <vmArgs>-Decf.generic.server.hostname=192.168.99.? -Dnet.mdns.interface=192.168.99.?
+      <vmArgs>-Decf.generic.server.hostname.XXX=192.168.1.? -Dnet.mdns.interface.XXX=192.168.1.0 -Dadmin=true
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
@@ -28,7 +27,6 @@
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>

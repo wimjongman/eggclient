@@ -1,8 +1,10 @@
 package com.remainsoftware.egg.core;
 
 import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.UnknownHostException;
 import java.util.Dictionary;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Properties;
 
@@ -29,7 +31,8 @@ public class OSGiUtil {
 		return FrameworkUtil.getBundle(requester.getClass()).getBundleContext();
 	}
 
-	public static ServiceRegistration<?> RegisterService(Class<?> serviceClass, Object service, Object requester) {
+	public static ServiceRegistration<?> RegisterService(Class<?> serviceClass,
+			Object service, Object requester) {
 
 		Dictionary<String, Object> pinProps = new Hashtable<String, Object>();
 		pinProps.put("service.exported.interfaces", "*");
@@ -52,5 +55,28 @@ public class OSGiUtil {
 		return getContext(requester).registerService(serviceClass.getName(),
 				service, pinProps);
 
+	}
+
+	/**
+	 * @return the first network address that is not in the loopback range or
+	 *         null if it could not be found.
+	 */
+	public static String getFirstInterface() {
+		try {
+			Enumeration<NetworkInterface> e = NetworkInterface
+					.getNetworkInterfaces();
+			while (e.hasMoreElements()) {
+				NetworkInterface n = e.nextElement();
+				Enumeration<InetAddress> ee = n.getInetAddresses();
+				while (ee.hasMoreElements()) {
+					InetAddress i = (InetAddress) ee.nextElement();
+					if (!(i.getHostAddress().startsWith("127"))) {
+						return i.getHostAddress();
+					}
+				}
+			}
+		} catch (Exception e) {
+		}
+		return null;
 	}
 }
