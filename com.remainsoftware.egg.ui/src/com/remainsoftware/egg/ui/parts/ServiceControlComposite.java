@@ -13,9 +13,9 @@ package com.remainsoftware.egg.ui.parts;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import org.eclipse.ecf.raspberrypi.gpio.IAnalogService;
 import org.eclipse.ecf.raspberrypi.gpio.IGPIOPin;
 import org.eclipse.ecf.raspberrypi.gpio.IGPIOPinOutput;
+import org.eclipse.ecf.raspberrypi.gpio.pi4j.adc.IAnalogService;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnWeightData;

@@ -15,8 +15,8 @@ import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 import org.eclipse.e4.ui.di.UISynchronize;
-import org.eclipse.ecf.raspberrypi.gpio.IAnalogService;
 import org.eclipse.ecf.raspberrypi.gpio.IGPIOPinOutput;
+import org.eclipse.ecf.raspberrypi.gpio.pi4j.adc.IAnalogService;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -36,7 +36,6 @@ public class EggCookPart implements
 	private ServiceRegistration<?> fTempService;
 	private EggCookComposite fEggCookComposite;
 
-	private ServiceManager fServiceManager;
 
 	@Inject
 	public EggCookPart() {
@@ -48,7 +47,7 @@ public class EggCookPart implements
 		registerTemperatureService();
 		parent.setLayout(new FillLayout());
 		fEggCookComposite = new EggCookComposite(parent, SWT.NONE);
-		fServiceManager = new ServiceManager(this);
+		new ServiceManager(this).open();
 	}
 
 	private void registerTemperatureService() {
